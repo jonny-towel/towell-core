@@ -37,3 +37,4 @@ bun lint         # Run ESLint (next/core-web-vitals + typescript rules)
   - React Native/Expo → usar skill `vercel-react-native-skills`
   - Integración con Claude API → usar skill `claude-api`
   - Cambios en DB, tablas, migraciones, RLS, funciones, o cualquier backend → usar **MCP de Supabase** (`mcp__supabase__*`)
+  - Componentes UI → usar siempre **MCP de shadcn** (`mcp__shadcn__*`) para buscar, instalar y consultar componentes de la librería. shadcn usa **Radix UI** como primitivos (NO Base UI)

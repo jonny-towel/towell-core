@@ -1,6 +1,16 @@
 {
+  "permissions": {
+    "allow": [
+      "mcp__supabase__list_tables",
+      "mcp__supabase__execute_sql",
+      "Bash(bunx shadcn@latest:*)",
+      "Bash(bun add:*)",
+      "WebFetch(domain:ui.shadcn.com)",
+      "mcp__supabase__apply_migration"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "supabase"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }
