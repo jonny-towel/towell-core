@@ -26,3 +26,14 @@ bun lint         # Run ESLint (next/core-web-vitals + typescript rules)
 **Environment files**:
 
 - `.env.local` — Supabase credentials (not committed)
+
+## Workflow Rules
+
+- **Actualizar CLAUDE.md**: Cada vez que el usuario pida un cambio (diseño, frontend, arquitectura, deployment, etc.), actualizar este archivo con los nuevos patrones o decisiones relevantes.
+- **Usar skills según el tipo de cambio**:
+  - Cambios de UI/diseño → usar skill `web-design-guidelines` y/o `vercel-react-best-practices`
+  - Refactor de componentes → usar skill `vercel-composition-patterns`
+  - Deploy → usar skill `deploy-to-vercel`
+  - React Native/Expo → usar skill `vercel-react-native-skills`
+  - Integración con Claude API → usar skill `claude-api`
+  - Cambios en DB, tablas, migraciones, RLS, funciones, o cualquier backend → usar **MCP de Supabase** (`mcp__supabase__*`)
