@@ -15,3 +15,7 @@ export interface ProjectDetailClientProps {
 export interface ProjectDetailHeaderProps {
   project: Project;
 }
+
+export interface ProjectCardProps {
+  project: Project;
+}
