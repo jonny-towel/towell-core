@@ -147,30 +147,33 @@ const data = {
       ],
     },
   ],
+  // Chats del Asistente AI (cada uno con sus hilos/threads)
   projects: [
     {
-      name: "Design Engineering",
+      name: "Diseño de producto",
       url: "#",
-      icon: (
-        <FrameIcon
-        />
-      ),
+      icon: <FrameIcon />,
+      threads: [
+        { title: "Wireframes v2", url: "#" },
+        { title: "Componentes UI", url: "#" },
+      ],
     },
     {
-      name: "Sales & Marketing",
+      name: "Ventas y marketing",
       url: "#",
-      icon: (
-        <PieChartIcon
-        />
-      ),
+      icon: <PieChartIcon />,
+      threads: [
+        { title: "Reporte Q1", url: "#" },
+        { title: "Campaña verano", url: "#" },
+      ],
     },
     {
-      name: "Travel",
+      name: "Planificación viajes",
       url: "#",
-      icon: (
-        <MapIcon
-        />
-      ),
+      icon: <MapIcon />,
+      threads: [
+        { title: "Viaje Barcelona", url: "#" },
+      ],
     },
   ],
 }
