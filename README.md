@@ -1,36 +1,157 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind-4-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind" />
+  <img src="https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase" alt="Supabase" />
+  <img src="https://img.shields.io/badge/Bun-Runtime-F9F1E1?style=for-the-badge&logo=bun" alt="Bun" />
+  <img src="https://img.shields.io/badge/Zustand-State-764ABC?style=for-the-badge&logo=zustand" alt="Zustand" />
+</p>
+
+<h1 align="center">Towell</h1>
+<p align="center">
+  <strong>Collaborative workspace with AI assistance</strong>
+</p>
+<p align="center">
+  Your space to manage projects, threads, and conversations—powered by AI.
+</p>
+
+---
+
+## Table of Contents
+
+- [Description](#description)
+- [Tech Stack](#tech-stack)
+- [Routes](#routes)
+- [Use Cases](#use-cases)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Environment](#environment)
+
+---
+
+## Description
+
+**Towell** is a modern web application that combines project management with AI-powered chat. Create projects, organize conversations into threads, and collaborate with an intelligent assistant—all in one place.
+
+### Key Features
+
+- **Project management** — Create, list, and organize projects with search and sort
+- **AI chat threads** — Multiple conversation threads per project
+- **Recent chats** — Quick access to your latest conversations with search and filters
+- **Responsive UI** — Built with shadcn/ui and Tailwind CSS v4
+- **Authentication** — Login and signup flows (Supabase Auth)
+
+---
+
+## Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| **Framework** | Next.js 16 (App Router) |
+| **Language** | TypeScript 5 |
+| **UI** | React 19, Tailwind CSS v4, shadcn/ui (Radix UI), Lucide Icons |
+| **Database** | PostgreSQL via Supabase |
+| **State** | Zustand |
+| **Forms** | React Hook Form, Zod |
+| **Package manager** | Bun |
+
+---
+
+## Routes
+
+| Route | Description |
+|-------|-------------|
+| `/` | Landing page |
+| `/login` | User login |
+| `/signup` | User registration |
+| `/dashboard` | Dashboard home |
+| `/dashboard/recents` | Recent chats (search, sort) |
+| `/dashboard/chat` | Chat section |
+| `/dashboard/proyecto` | Projects list (search, sort) |
+| `/dashboard/proyecto/nuevo` | Create new project |
+| `/dashboard/proyecto/[id]` | Project detail with chat threads |
+
+---
+
+## Use Cases
+
+- **Create a project** — Start a new workspace for a topic or client
+- **Chat with AI** — Have threaded conversations within each project
+- **Browse recent chats** — Find and resume past conversations quickly
+- **Search & filter** — Search projects or chats; sort by activity, name, or recency
+- **Manage threads** — Organize multiple conversation threads per project
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- [Bun](https://bun.sh/) (recommended) or Node.js 18+
+
+### Install & Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+bun install
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+bun build
+bun start
+```
+
+### Scripts
+
+| Command | Description |
+|---------|-------------|
+| `bun dev` | Start development server |
+| `bun build` | Build for production |
+| `bun start` | Start production server |
+| `bun lint` | Run ESLint |
+| `bun test` | Run tests (Vitest) |
+| `bun run test:watch` | Run tests in watch mode |
+| `bun run test:coverage` | Generate coverage report |
+
+---
+
+## Project Structure
+
+```
+app/                    # Next.js App Router
+├── dashboard/          # Dashboard routes
+│   ├── proyecto/       # Projects (list, new, [id])
+│   ├── recents/        # Recent chats
+│   └── chat/           # Chat section
+├── login/
+├── signup/
+components/
+├── layouts/            # Shared layouts (ListPageWithSearch)
+├── projects/           # Project components
+├── ui/                 # shadcn primitives
+constants/              # App constants
+helpers/                # Pure utility functions
+hooks/                  # Custom React hooks
+interfaces/             # TypeScript types
+store/                  # Zustand stores
+```
+
+---
+
+## Environment
+
+Copy `.env.example` to `.env.local` and add your Supabase credentials. Do not commit `.env.local`.
+
+---
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Supabase Documentation](https://supabase.com/docs)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
