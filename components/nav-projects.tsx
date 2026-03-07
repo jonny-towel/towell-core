@@ -50,7 +50,7 @@ export function NavProjects({
             tooltip={CHAT_SECTION.newChat}
             asChild
           >
-            <Link href="/dashboard/chat">
+            <Link href="/dashboard/recents">
               <PlusIcon className="text-sidebar-foreground/70" />
               <span>{CHAT_SECTION.newChat}</span>
             </Link>

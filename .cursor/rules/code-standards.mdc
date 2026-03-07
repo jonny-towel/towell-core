@@ -33,3 +33,11 @@ alwaysApply: true
 ## Componentes .tsx
 - Solo JSX, imports y llamadas a hooks/stores.
 - Sin interfaces, helpers ni constantes definidas inline.
+
+## Reutilización de componentes
+- **Verificar antes de crear**: Buscar componentes existentes que puedan reutilizarse antes de implementar uno nuevo.
+- Si varios lugares usan el mismo patrón (ej. input con icono de búsqueda), extraer a un componente compartido.
+
+## Componentes shadcn
+- **Usar los existentes**: Comprobar `components/ui/` antes de añadir componentes de shadcn.
+- **No instalar nuevos** a menos que el usuario lo pida explícitamente.

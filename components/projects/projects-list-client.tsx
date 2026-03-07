@@ -2,9 +2,8 @@
 
 import { useMemo } from "react";
 import Link from "next/link";
-import { PlusIcon, SearchIcon } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -12,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ListPageWithSearch } from "@/components/layouts/list-page-with-search";
 import { cn } from "@/lib/utils";
 import { MOCK_PROJECTS, SORT_OPTIONS } from "@/constants/projects.constants";
 import {
@@ -21,13 +21,11 @@ import {
 import type { SortOption } from "@/interfaces/project.interface";
 import { useProjectsListStore } from "@/store/use-projects-list-store";
 
-// ─── Component ────────────────────────────────────────────────────────────────
-
 /**
  * ProjectsListClient
  *
  * Listado de proyectos con búsqueda y ordenamiento.
- * Estado de filtros en Zustand (useProjectsListStore).
+ * Usa ListPageWithSearch (layout compartido con Chats).
  */
 export function ProjectsListClient() {
   const { search, sort, setSearch, setSort } = useProjectsListStore();
@@ -37,54 +35,45 @@ export function ProjectsListClient() {
     [search, sort]
   );
 
+  const sortToolbar = (
+    <div className="flex shrink-0 items-center gap-2">
+      <span className="text-sm text-muted-foreground">Ordenar por</span>
+      <Select value={sort} onValueChange={(v) => setSort(v as SortOption)}>
+        <SelectTrigger className="w-[140px]">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {SORT_OPTIONS.map((opt) => (
+            <SelectItem key={opt.value} value={opt.value}>
+              {opt.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 p-6">
-      {/* ── Header ── */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-semibold tracking-tight text-foreground">
-          Proyectos
-        </h1>
-        <Button asChild size="default" className="gap-2">
+    <ListPageWithSearch
+      title="Proyectos"
+      action={
+        <Button
+          asChild
+          size="default"
+          className="gap-2 bg-black text-white hover:bg-black/90"
+        >
           <Link href="/dashboard/proyecto/nuevo">
             <PlusIcon className="size-4" aria-hidden />
             Nuevo proyecto
           </Link>
         </Button>
-      </div>
-
-      {/* ── Filters ── */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-4">
-        <div className="relative min-w-0 flex-1">
-          <SearchIcon
-            className="absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-muted-foreground"
-            aria-hidden
-          />
-          <Input
-            type="search"
-            placeholder="Buscar proyectos..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="h-10 w-full pl-9"
-            aria-label="Buscar proyectos"
-          />
-        </div>
-        <div className="flex shrink-0 items-center gap-2">
-          <span className="text-sm text-muted-foreground">Ordenar por</span>
-          <Select value={sort} onValueChange={(v) => setSort(v as SortOption)}>
-            <SelectTrigger className="w-[140px]">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {SORT_OPTIONS.map((opt) => (
-                <SelectItem key={opt.value} value={opt.value}>
-                  {opt.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-
+      }
+      searchPlaceholder="Buscar proyectos..."
+      searchValue={search}
+      onSearchChange={setSearch}
+      searchAriaLabel="Buscar proyectos"
+      toolbar={sortToolbar}
+    >
       {/* ── Project cards ── */}
       <div className="grid grid-cols-1 gap-4">
         {filteredAndSorted.map((project) => (
@@ -134,6 +123,6 @@ export function ProjectsListClient() {
           )}
         </div>
       )}
-    </div>
+    </ListPageWithSearch>
   );
 }
