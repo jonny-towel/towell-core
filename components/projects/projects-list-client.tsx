@@ -4,16 +4,10 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { ListPageWithSearch } from "@/components/layouts/list-page-with-search";
+import { SortSelect } from "@/components/ui/sort-select";
 import { cn } from "@/lib/utils";
-import { MOCK_PROJECTS, SORT_OPTIONS } from "@/constants/projects.constants";
+import { MOCK_PROJECTS, SORT_OPTIONS, PROJECTS_PAGE } from "@/constants/projects.constants";
 import {
   filterAndSortProjects,
   formatProjectUpdatedAt,
@@ -35,27 +29,9 @@ export function ProjectsListClient() {
     [search, sort]
   );
 
-  const sortToolbar = (
-    <div className="flex shrink-0 items-center gap-2">
-      <span className="text-sm text-muted-foreground">Ordenar por</span>
-      <Select value={sort} onValueChange={(v) => setSort(v as SortOption)}>
-        <SelectTrigger className="w-[140px]">
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          {SORT_OPTIONS.map((opt) => (
-            <SelectItem key={opt.value} value={opt.value}>
-              {opt.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
-  );
-
   return (
     <ListPageWithSearch
-      title="Proyectos"
+      title={PROJECTS_PAGE.title}
       action={
         <Button
           asChild
@@ -64,15 +40,21 @@ export function ProjectsListClient() {
         >
           <Link href="/dashboard/proyecto/nuevo">
             <PlusIcon className="size-4" aria-hidden />
-            Nuevo proyecto
+            {PROJECTS_PAGE.newProject}
           </Link>
         </Button>
       }
-      searchPlaceholder="Buscar proyectos..."
+      searchPlaceholder={PROJECTS_PAGE.searchPlaceholder}
       searchValue={search}
       onSearchChange={setSearch}
-      searchAriaLabel="Buscar proyectos"
-      toolbar={sortToolbar}
+      searchAriaLabel={PROJECTS_PAGE.searchAriaLabel}
+      toolbar={
+        <SortSelect
+          value={sort}
+          options={SORT_OPTIONS}
+          onValueChange={(v) => setSort(v as SortOption)}
+        />
+      }
     >
       {/* ── Project cards ── */}
       <div className="grid grid-cols-1 gap-4">
@@ -110,14 +92,14 @@ export function ProjectsListClient() {
         <div className="flex flex-1 flex-col items-center justify-center gap-4 rounded-xl border border-dashed border-muted-foreground/25 bg-muted/20 py-16">
           <p className="text-sm text-muted-foreground">
             {search
-              ? "No se encontraron proyectos con ese criterio."
-              : "Aún no tienes proyectos. Crea uno para empezar."}
+              ? PROJECTS_PAGE.emptySearch
+              : PROJECTS_PAGE.emptyDefault}
           </p>
           {!search && (
             <Button asChild>
               <Link href="/dashboard/proyecto/nuevo">
                 <PlusIcon className="size-4" aria-hidden />
-                Nuevo proyecto
+                {PROJECTS_PAGE.newProject}
               </Link>
             </Button>
           )}

@@ -17,6 +17,7 @@ export const RECENTS_PAGE = {
   title: "Chats",
   newChat: "Nuevo chat",
   searchPlaceholder: "Buscar en sus chats...",
+  searchAriaLabel: "Buscar en chats",
   emptyMessage: "No hay conversaciones recientes.",
 } as const;
 

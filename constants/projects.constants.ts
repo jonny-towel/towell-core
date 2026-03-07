@@ -1,5 +1,15 @@
 import type { Project, SortOption } from "@/interfaces/project.interface";
 
+/** Textos de la página de listado de proyectos */
+export const PROJECTS_PAGE = {
+  title: "Proyectos",
+  newProject: "Nuevo proyecto",
+  searchPlaceholder: "Buscar proyectos...",
+  searchAriaLabel: "Buscar proyectos",
+  emptySearch: "No se encontraron proyectos con ese criterio.",
+  emptyDefault: "Aún no tienes proyectos. Crea uno para empezar.",
+} as const;
+
 /** Opciones de ordenamiento para el listado de proyectos */
 export const SORT_OPTIONS: readonly { value: SortOption; label: string }[] = [
   { value: "activity", label: "Actividad" },

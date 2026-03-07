@@ -2,12 +2,12 @@ import { create } from "zustand";
 import type { RecentsSortOption } from "@/interfaces/recents-thread.interface";
 
 interface RecentsState {
-  searchQuery: string;
+  search: string;
   sort: RecentsSortOption;
 }
 
 interface RecentsActions {
-  setSearchQuery: (query: string) => void;
+  setSearch: (query: string) => void;
   setSort: (sort: RecentsSortOption) => void;
   reset: () => void;
 }
@@ -15,13 +15,13 @@ interface RecentsActions {
 type RecentsStore = RecentsState & RecentsActions;
 
 const INITIAL_STATE: RecentsState = {
-  searchQuery: "",
+  search: "",
   sort: "recent",
 };
 
 export const useRecentsStore = create<RecentsStore>((set) => ({
   ...INITIAL_STATE,
-  setSearchQuery: (searchQuery) => set({ searchQuery }),
+  setSearch: (search) => set({ search }),
   setSort: (sort) => set({ sort }),
   reset: () => set(INITIAL_STATE),
 }));

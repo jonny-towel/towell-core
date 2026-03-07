@@ -4,14 +4,8 @@ import { useMemo } from "react";
 import Link from "next/link";
 import { PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { ListPageWithSearch } from "@/components/layouts/list-page-with-search";
+import { SortSelect } from "@/components/ui/sort-select";
 import {
   RECENTS_PAGE,
   RECENTS_SORT_OPTIONS,
@@ -28,32 +22,14 @@ import { useRecentsStore } from "@/store/use-recents-store";
  * Usa font-display para títulos según diseño.
  */
 export function RecentsClient() {
-  const { searchQuery, setSearchQuery, sort, setSort } = useRecentsStore();
+  const { search, setSearch, sort, setSort } = useRecentsStore();
 
   const filteredAndSorted = useMemo(() => {
     const filtered = MOCK_RECENTS_THREADS.filter((t) =>
-      t.title.toLowerCase().includes(searchQuery.toLowerCase())
+      t.title.toLowerCase().includes(search.toLowerCase())
     );
     return sortRecentsThreads([...filtered], sort);
-  }, [searchQuery, sort]);
-
-  const sortToolbar = (
-    <div className="flex shrink-0 items-center gap-2">
-      <span className="text-sm text-muted-foreground">Ordenar por</span>
-      <Select value={sort} onValueChange={(v) => setSort(v as RecentsSortOption)}>
-        <SelectTrigger className="w-[140px]">
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          {RECENTS_SORT_OPTIONS.map((opt) => (
-            <SelectItem key={opt.value} value={opt.value}>
-              {opt.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
-  );
+  }, [search, sort]);
 
   return (
     <ListPageWithSearch
@@ -72,10 +48,16 @@ export function RecentsClient() {
         </Button>
       }
       searchPlaceholder={RECENTS_PAGE.searchPlaceholder}
-      searchValue={searchQuery}
-      onSearchChange={setSearchQuery}
-      searchAriaLabel="Buscar en chats"
-      toolbar={sortToolbar}
+      searchValue={search}
+      onSearchChange={setSearch}
+      searchAriaLabel={RECENTS_PAGE.searchAriaLabel}
+      toolbar={
+        <SortSelect
+          value={sort}
+          options={RECENTS_SORT_OPTIONS}
+          onValueChange={(v) => setSort(v as RecentsSortOption)}
+        />
+      }
     >
       {filteredAndSorted.length === 0 ? (
         <div className="flex flex-1 flex-col items-center justify-center rounded-xl border border-dashed border-muted-foreground/25 bg-muted/10 py-16 px-4">

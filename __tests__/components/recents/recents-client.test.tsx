@@ -13,9 +13,9 @@ const mockSetSort = vi.fn();
 
 function setupStore(overrides = {}) {
   vi.mocked(useRecentsStore).mockReturnValue({
-    searchQuery: "",
+    search: "",
     sort: "recent",
-    setSearchQuery: mockSetSearchQuery,
+    setSearch: mockSetSearchQuery,
     setSort: mockSetSort,
     reset: vi.fn(),
     ...overrides,
@@ -56,15 +56,15 @@ describe("RecentsClient", () => {
   });
 
   describe("búsqueda", () => {
-    it("filtra threads según el searchQuery del store", () => {
-      setupStore({ searchQuery: "ETFs" });
+    it("filtra threads según el search del store", () => {
+      setupStore({ search: "ETFs" });
       render(<RecentsClient />);
       expect(screen.getByText(/Mejores ETFs/i)).toBeInTheDocument();
       expect(screen.queryByText(/Diseño de esquemas/i)).not.toBeInTheDocument();
     });
 
     it("muestra estado vacío cuando no hay coincidencias", () => {
-      setupStore({ searchQuery: "zzz-no-match" });
+      setupStore({ search: "zzz-no-match" });
       render(<RecentsClient />);
       expect(screen.getByText(/No hay conversaciones recientes/i)).toBeInTheDocument();
     });
