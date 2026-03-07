@@ -82,7 +82,7 @@ export function ProjectsListClient() {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-6 p-6">
+    <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 p-6">
       {/* ── Header ── */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-semibold tracking-tight text-foreground">
@@ -97,10 +97,10 @@ export function ProjectsListClient() {
       </div>
 
       {/* ── Filters ── */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-4">
-        <div className="relative flex-1">
+      <div className="flex flex-col gap-4">
+        <div className="relative w-full">
           <SearchIcon
-            className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
+            className="absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-muted-foreground"
             aria-hidden
           />
           <Input
@@ -108,7 +108,7 @@ export function ProjectsListClient() {
             placeholder="Buscar proyectos..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-9"
+            className="h-10 w-full pl-9"
             aria-label="Buscar proyectos"
           />
         </div>
@@ -128,7 +128,7 @@ export function ProjectsListClient() {
       </div>
 
       {/* ── Project cards ── */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4">
         {filteredAndSorted.map((project) => (
           <Link
             key={project.id}
