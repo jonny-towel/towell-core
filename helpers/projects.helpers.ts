@@ -1,10 +1,6 @@
 import type { Project, SortOption } from "@/interfaces/project.interface";
 
 /**
- * Helpers para el módulo de proyectos.
- */
-
-/**
  * Formatea la cantidad de días en texto legible.
  * @param days - Cantidad de días (string o número)
  * @returns "Actualizado hace 1 día" o "Actualizado hace N días"
@@ -26,7 +22,7 @@ export function filterAndSortProjects(
   let list = [...projects];
 
   if (search.trim()) {
-    const q = search.toLowerCase();
+    const q = search.trim().toLowerCase();
     list = list.filter(
       (p) =>
         p.name.toLowerCase().includes(q) ||
@@ -41,16 +37,6 @@ export function filterAndSortProjects(
   }
 
   return list;
-}
-
-/**
- * Formatea los días desde el último mensaje de un thread.
- * @param days - Cantidad de días
- * @returns "Último mensaje hace 1 día" o "Último mensaje hace N días"
- */
-export function formatThreadLastMessage(days: number): string {
-  if (days === 1) return "Último mensaje hace 1 día";
-  return `Último mensaje hace ${days} días`;
 }
 
 /**

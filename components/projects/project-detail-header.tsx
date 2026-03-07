@@ -13,12 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import type { Project } from "@/interfaces/project.interface";
+import type { ProjectDetailHeaderProps } from "@/interfaces/project.interface";
 import { PROJECT_DETAIL } from "@/constants/project-detail.constants";
-
-interface ProjectDetailHeaderProps {
-  project: Project;
-}
 
 export function ProjectDetailHeader({ project }: ProjectDetailHeaderProps) {
   return (

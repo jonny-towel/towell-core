@@ -6,15 +6,10 @@ import { PROJECT_SUGGESTIONS } from "@/constants/chat-suggestions.constants";
 import type {
   ChatSuggestion,
   ChatSuggestionsProps,
+  CategoryCardProps,
 } from "@/interfaces/chat-suggestion.interface";
 
 // ─── CategoryCard (memoizado: rerender-memo) ──────────────────────────────────
-
-interface CategoryCardProps {
-  suggestion: ChatSuggestion;
-  isSelected: boolean;
-  onSelect: (id: string) => void;
-}
 
 const CategoryCard = memo(function CategoryCard({
   suggestion,

@@ -18,3 +18,9 @@ export interface ChatSuggestionsProps {
   /** Clases CSS adicionales. */
   className?: string;
 }
+
+export interface CategoryCardProps {
+  suggestion: ChatSuggestion;
+  isSelected: boolean;
+  onSelect: (id: string) => void;
+}

@@ -7,3 +7,11 @@ export interface Project {
   updatedAt: string;
   badge?: string;
 }
+
+export interface ProjectDetailClientProps {
+  project: Project;
+}
+
+export interface ProjectDetailHeaderProps {
+  project: Project;
+}

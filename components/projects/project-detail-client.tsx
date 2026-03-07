@@ -2,11 +2,7 @@
 
 import { ProjectDetailHeader } from "./project-detail-header";
 import { ProjectDetailChat } from "./project-detail-chat";
-import type { Project } from "@/interfaces/project.interface";
-
-interface ProjectDetailClientProps {
-  project: Project;
-}
+import type { ProjectDetailClientProps } from "@/interfaces/project.interface";
 
 export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
   return (
