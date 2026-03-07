@@ -17,6 +17,8 @@ export function ChatInput({
   disabled = false,
   placeholder = "Escribe un mensaje...",
   className,
+  value: controlledValue,
+  onValueChange,
 }: ChatInputProps) {
   const {
     value,
@@ -25,7 +27,12 @@ export function ChatInput({
     handleSend,
     handleKeyDown,
     canSend,
-  } = useChatInput({ onSend, disabled });
+  } = useChatInput({
+    onSend,
+    disabled,
+    controlledValue,
+    onControlledChange: onValueChange,
+  });
 
   return (
     <div
