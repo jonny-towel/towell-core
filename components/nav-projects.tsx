@@ -45,7 +45,7 @@ export function NavProjects({
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton className="text-sidebar-foreground/70" asChild>
-            <Link href="/dashboard/proyecto/nuevo">
+            <Link href="/dashboard/proyecto">
               <PlusIcon className="text-sidebar-foreground/70" />
               <span>Agregar proyecto</span>
             </Link>

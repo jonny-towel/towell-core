@@ -1,28 +1,12 @@
 "use client";
 
-import { useCallback } from "react";
 import Link from "next/link";
 import { Loader2Icon } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useNewProjectStore } from "@/store/use-new-project-store";
 import { cn } from "@/lib/utils";
-
-// ─── Schema ───────────────────────────────────────────────────────────────────
-
-const schema = z.object({
-  name: z
-    .string()
-    .min(2, "El nombre debe tener al menos 2 caracteres")
-    .max(80, "Máximo 80 caracteres"),
-  description: z.string().max(300, "Máximo 300 caracteres").optional(),
-});
-
-type FormValues = z.infer<typeof schema>;
+import { useNewProjectForm } from "./hooks/use-new-project-form";
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -30,48 +14,27 @@ type FormValues = z.infer<typeof schema>;
  * NewProjectClient
  *
  * Formulario profesional de creación de proyecto.
- * — Validación con react-hook-form + zod
- * — Estado de envío gestionado por Zustand
+ * — Lógica de formulario delegada a useNewProjectForm (react-hook-form + zod)
+ * — Estado de envío gestionado por Zustand vía el hook
  */
 export function NewProjectClient() {
-  const { isCreating, error, setIsCreating, setError, reset } =
-    useNewProjectStore();
-
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
-  } = useForm<FormValues>({
-    resolver: zodResolver(schema),
-    mode: "onChange",
-  })
+    errors,
+    isValid,
+    isCreating,
+    error,
+    onSubmit,
+  } = useNewProjectForm();
 
-  const nameInvalid = !!errors.name
-
-  const onSubmit = useCallback(
-    async (values: FormValues) => {
-      setIsCreating(true);
-      setError(null);
-      try {
-        // TODO: integrar con Supabase → insertar proyecto y redirigir
-        console.log("Crear proyecto:", values);
-        reset();
-      } catch (err) {
-        setError(
-          err instanceof Error ? err.message : "Error al crear el proyecto"
-        );
-      } finally {
-        setIsCreating(false);
-      }
-    },
-    [setIsCreating, setError, reset]
-  );
+  const nameInvalid = !!errors.name;
 
   return (
     <div className="w-full max-w-xl">
       {/* ── Header ── */}
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold tracking-tight text-foreground">
+        <h1 className="font-display text-2xl font-semibold tracking-tight text-foreground">
           Nuevo proyecto
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
@@ -160,9 +123,7 @@ export function NewProjectClient() {
                 Creando...
               </>
             ) : (
-              <>
-                Crear proyecto
-              </>
+              <>Crear proyecto</>
             )}
           </Button>
         </div>
