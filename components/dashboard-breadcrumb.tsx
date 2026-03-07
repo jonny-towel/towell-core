@@ -10,16 +10,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-
-const LABELS: Record<string, string> = {
-  dashboard: "Dashboard",
-  proyecto: "Proyecto",
-  nuevo: "Nuevo",
-}
-
-function formatLabel(segment: string): string {
-  return LABELS[segment] ?? segment.charAt(0).toUpperCase() + segment.slice(1)
-}
+import { formatBreadcrumbLabel } from "@/helpers/breadcrumb.helpers"
 
 export function DashboardBreadcrumb() {
   const pathname = usePathname()
@@ -32,7 +23,7 @@ export function DashboardBreadcrumb() {
       <BreadcrumbList>
         {segments.map((segment, i) => {
           const href = "/" + segments.slice(0, i + 1).join("/")
-          const label = formatLabel(segment)
+          const label = formatBreadcrumbLabel(segment)
           const isLast = i === segments.length - 1
 
           return (

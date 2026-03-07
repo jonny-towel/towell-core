@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { BarChart2 } from "lucide-react";
-import { ChatSuggestions } from "@/components/chat/chat-suggestions";
-import { PROJECT_SUGGESTIONS } from "@/components/chat/chat-suggestions/constants/chat-suggestions.constants";
-import type { ChatSuggestion } from "@/components/chat/chat-suggestions/interfaces/chat-suggestion.interface";
+import { ChatSuggestions } from "@/components/projects/threads/chats/chat-suggestions";
+import { PROJECT_SUGGESTIONS } from "@/constants/chat-suggestions.constants";
+import type { ChatSuggestion } from "@/interfaces/chat-suggestion.interface";
 
 const CUSTOM_SUGGESTIONS: ChatSuggestion[] = [
   {

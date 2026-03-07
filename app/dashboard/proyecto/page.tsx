@@ -1,16 +1,4 @@
-import type { Metadata } from "next";
-import { ProjectsListClient } from "./_components/projects-list-client";
-
-// ─── SEO ──────────────────────────────────────────────────────────────────────
-
-export const metadata: Metadata = {
-  title: "Proyectos",
-  description:
-    "Gestiona tus proyectos de trabajo colaborativo con asistencia de IA.",
-};
-
-// ─── Page ─────────────────────────────────────────────────────────────────────
-
+import { ProjectsListClient } from "@/components/projects/projects-list-client";
 /**
  * ProyectosPage
  *

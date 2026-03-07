@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
-import { useNewProjectForm } from "@/app/dashboard/proyecto/nuevo/_components/hooks/use-new-project-form";
+import { useNewProjectForm } from "@/hooks/use-new-project-form";
 import { useNewProjectStore } from "@/store/use-new-project-store";
 
 // ─── Mocks ────────────────────────────────────────────────────────────────────

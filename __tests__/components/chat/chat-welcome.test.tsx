@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { ChatWelcome } from "@/components/chat/chat-welcome";
+import { ChatWelcome } from "@/components/projects/threads/chats/chat-welcome";
 
 describe("ChatWelcome", () => {
   describe("renderizado por defecto", () => {

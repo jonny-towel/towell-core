@@ -1,16 +1,4 @@
-import type { Metadata } from "next";
-import { NewProjectClient } from "./_components/new-project-client";
-
-// ─── SEO ──────────────────────────────────────────────────────────────────────
-
-export const metadata: Metadata = {
-  title: "Nuevo Proyecto",
-  description:
-    "Crea un nuevo proyecto de trabajo colaborativo con asistencia de IA.",
-};
-
-// ─── Page ─────────────────────────────────────────────────────────────────────
-
+import { NewProjectClient } from "@/components/projects/new-project-client";
 /**
  * NuevoProyectoPage
  *

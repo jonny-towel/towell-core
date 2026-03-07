@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { act } from "@testing-library/react";
-import { NewProjectClient } from "@/app/dashboard/proyecto/nuevo/_components/new-project-client";
+import { NewProjectClient } from "@/components/projects/new-project-client";
 import { useNewProjectStore } from "@/store/use-new-project-store";
 
 // ─── Mocks ────────────────────────────────────────────────────────────────────
@@ -84,10 +84,10 @@ describe("NewProjectClient", () => {
       expect(screen.getByRole("textbox", { name: /qué intenta lograr/i })).toBeInTheDocument();
     });
 
-    it("renderiza el botón Cancelar como enlace a /dashboard", () => {
+    it("renderiza el botón Cancelar como enlace a /dashboard/proyecto", () => {
       render(<NewProjectClient />);
       const cancelar = screen.getByRole("link", { name: /cancelar/i });
-      expect(cancelar).toHaveAttribute("href", "/dashboard");
+      expect(cancelar).toHaveAttribute("href", "/dashboard/proyecto");
     });
 
     it("renderiza el botón de envío 'Crear proyecto'", () => {
