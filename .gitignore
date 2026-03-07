@@ -16,7 +16,13 @@
 # next.js
 /.next/
 /out/
-
+.claude/
+.vscode/
+.windsurf/
+CLAUDE.md
+.mcp.json
+components.json
+skills-lock.json
 # production
 /build
 
