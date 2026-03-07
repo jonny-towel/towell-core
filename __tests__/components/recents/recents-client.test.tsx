@@ -48,10 +48,10 @@ describe("RecentsClient", () => {
   });
 
   describe("bug fix: botón Nuevo Chat", () => {
-    it('el botón "Nuevo chat" apunta a /dashboard/proyecto/nuevo (no a /dashboard/recents)', () => {
+    it('el botón "Nuevo chat" apunta a /dashboard/chat', () => {
       render(<RecentsClient />);
       const link = screen.getByRole("link", { name: /nuevo chat/i });
-      expect(link).toHaveAttribute("href", "/dashboard/proyecto/nuevo");
+      expect(link).toHaveAttribute("href", "/dashboard/chat");
     });
   });
 

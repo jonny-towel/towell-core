@@ -41,7 +41,7 @@ export function RecentsClient() {
           size="default"
           className="gap-2 bg-black text-white hover:bg-black/90"
         >
-          <Link href="/dashboard/proyecto/nuevo">
+          <Link href="/dashboard/chat">
             <PlusIcon className="size-4" aria-hidden />
             {RECENTS_PAGE.newChat}
           </Link>

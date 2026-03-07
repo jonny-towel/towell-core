@@ -27,9 +27,9 @@ const CategoryCard = memo(function CategoryCard({
         onClick={() => onSelect(suggestion.id)}
         className={cn(
           "group flex w-full flex-col gap-3 rounded-xl border p-4 text-left",
-          "transition-all duration-150",
+          "transition duration-150",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-          "active:scale-[0.98]",
+          "motion-safe:active:scale-[0.98]",
           isSelected
             ? "border-primary bg-primary/5 shadow-sm"
             : "border-border bg-card hover:border-border/80 hover:bg-muted/40"
