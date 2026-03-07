@@ -1,0 +1,35 @@
+---
+description: Estándares de código - líneas máximas, interfaces, helpers, Zustand
+alwaysApply: true
+---
+
+# Estándares de Código
+
+## Límite de líneas
+- **Máximo 250 líneas** por archivo. Si superas, extrae a módulos separados.
+
+## Interfaces
+- Todas las interfaces y tipos van en `interfaces/`.
+- **No definir interfaces dentro de archivos .tsx**. Importar desde `@/interfaces/`.
+
+## Helpers
+- Funciones auxiliares en `helpers/`.
+- **No definir helpers dentro de .tsx**. Importar desde `@/helpers/`.
+
+## Constants
+- Constantes y configuraciones en `constants/`.
+- **No usar valores mágicos** en componentes. Extraer a `@/constants/`.
+
+## Estado: Zustand (no useState)
+- Usar **Zustand** para estado compartido o de UI.
+- **Evitar useState** cuando el estado pueda vivir en un store.
+- Crear stores en `store/` con patrón: `use-<dominio>-store.ts`.
+
+## Hooks
+- Reutilizar hooks existentes cuando sea posible.
+- Crear hooks en `hooks/` para lógica reutilizable.
+- Los componentes .tsx solo importan y usan hooks, no definen lógica compleja inline.
+
+## Componentes .tsx
+- Solo JSX, imports y llamadas a hooks/stores.
+- Sin interfaces, helpers ni constantes definidas inline.

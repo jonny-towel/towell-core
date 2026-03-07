@@ -24,7 +24,8 @@ import {
   SidebarMenuSubItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { ChevronRightIcon, MoreHorizontalIcon, MessageSquareIcon, Trash2Icon, PlusIcon, PencilIcon } from "lucide-react"
+import { ChevronRightIcon, MoreHorizontalIcon, MessageSquareIcon, Trash2Icon, PlusIcon, FolderIcon, PencilIcon } from "lucide-react"
+import { CHAT_SECTION } from "@/constants/chat.constants"
 import Link from "next/link"
 
 export function NavProjects({
@@ -44,10 +45,26 @@ export function NavProjects({
       <SidebarGroupLabel>Asistente AI</SidebarGroupLabel>
       <SidebarMenu>
         <SidebarMenuItem>
-          <SidebarMenuButton className="text-sidebar-foreground/70" asChild>
-            <Link href="/dashboard/proyecto">
+          <SidebarMenuButton
+            className="text-sidebar-foreground/70"
+            tooltip={CHAT_SECTION.newChat}
+            asChild
+          >
+            <Link href="/dashboard/chat">
               <PlusIcon className="text-sidebar-foreground/70" />
-              <span>Agregar proyecto</span>
+              <span>{CHAT_SECTION.newChat}</span>
+            </Link>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+        <SidebarMenuItem>
+          <SidebarMenuButton
+            className="text-sidebar-foreground/70"
+            tooltip={CHAT_SECTION.addProject}
+            asChild
+          >
+            <Link href="/dashboard/proyecto">
+              <FolderIcon className="text-sidebar-foreground/70" />
+              <span>{CHAT_SECTION.addProject}</span>
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>
