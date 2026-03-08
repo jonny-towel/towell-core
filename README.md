@@ -10,148 +10,148 @@
 
 <h1 align="center">Towell</h1>
 <p align="center">
-  <strong>Collaborative workspace with AI assistance</strong>
+  <strong>Espacio de trabajo colaborativo con asistencia de IA</strong>
 </p>
 <p align="center">
-  Your space to manage projects, threads, and conversations—powered by AI.
+  Tu espacio para gestionar proyectos con IA.
 </p>
 
 ---
 
-## Table of Contents
+## Índice
 
-- [Description](#description)
-- [Tech Stack](#tech-stack)
-- [Routes](#routes)
-- [Use Cases](#use-cases)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Environment](#environment)
-
----
-
-## Description
-
-**Towell** is a modern web application that combines project management with AI-powered chat. Create projects, organize conversations into threads, and collaborate with an intelligent assistant—all in one place.
-
-### Key Features
-
-- **Project management** — Create, list, and organize projects with search and sort
-- **AI chat threads** — Multiple conversation threads per project
-- **Recent chats** — Quick access to your latest conversations with search and filters
-- **Responsive UI** — Built with shadcn/ui and Tailwind CSS v4
-- **Authentication** — Login and signup flows (Supabase Auth)
+- [Descripción](#descripción)
+- [Tecnologías](#tecnologías)
+- [Rutas](#rutas)
+- [Casos de uso](#casos-de-uso)
+- [Primeros pasos](#primeros-pasos)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Variables de entorno](#variables-de-entorno)
 
 ---
 
-## Tech Stack
+## Descripción
 
-| Category | Technologies |
-|----------|--------------|
+**Towell** es una aplicación web moderna que combina gestión de proyectos con chat impulsado por IA. Crea proyectos, organiza conversaciones en hilos y colabora con un asistente inteligente—todo en un solo lugar.
+
+### Características principales
+
+- **Gestión de proyectos** — Crear, listar y organizar proyectos con búsqueda y ordenamiento
+- **Hilos de chat con IA** — Múltiples conversaciones por proyecto
+- **Chats recientes** — Acceso rápido a tus últimas conversaciones con búsqueda y filtros
+- **UI responsive** — Construida con shadcn/ui y Tailwind CSS v4
+- **Autenticación** — Flujos de login y registro (Supabase Auth)
+
+---
+
+## Tecnologías
+
+| Categoría | Tecnologías |
+|-----------|-------------|
 | **Framework** | Next.js 16 (App Router) |
-| **Language** | TypeScript 5 |
+| **Lenguaje** | TypeScript 5 |
 | **UI** | React 19, Tailwind CSS v4, shadcn/ui (Radix UI), Lucide Icons |
-| **Database** | PostgreSQL via Supabase |
-| **State** | Zustand |
-| **Forms** | React Hook Form, Zod |
-| **Package manager** | Bun |
+| **Base de datos** | PostgreSQL vía Supabase |
+| **Estado** | Zustand |
+| **Formularios** | React Hook Form, Zod |
+| **Gestor de paquetes** | Bun |
 
 ---
 
-## Routes
+## Rutas
 
-| Route | Description |
-|-------|-------------|
-| `/` | Landing page |
-| `/login` | User login |
-| `/signup` | User registration |
-| `/dashboard` | Dashboard home |
-| `/dashboard/recents` | Recent chats (search, sort) |
-| `/dashboard/chat` | Chat section |
-| `/dashboard/proyecto` | Projects list (search, sort) |
-| `/dashboard/proyecto/nuevo` | Create new project |
-| `/dashboard/proyecto/[id]` | Project detail with chat threads |
-
----
-
-## Use Cases
-
-- **Create a project** — Start a new workspace for a topic or client
-- **Chat with AI** — Have threaded conversations within each project
-- **Browse recent chats** — Find and resume past conversations quickly
-- **Search & filter** — Search projects or chats; sort by activity, name, or recency
-- **Manage threads** — Organize multiple conversation threads per project
+| Ruta | Descripción |
+|------|-------------|
+| `/` | Página de inicio |
+| `/login` | Inicio de sesión |
+| `/signup` | Registro de usuario |
+| `/dashboard` | Panel principal |
+| `/dashboard/recents` | Chats recientes (búsqueda, orden) |
+| `/dashboard/chat` | Sección de chat |
+| `/dashboard/proyecto` | Lista de proyectos (búsqueda, orden) |
+| `/dashboard/proyecto/nuevo` | Crear nuevo proyecto |
+| `/dashboard/proyecto/[id]` | Detalle de proyecto con hilos de chat |
 
 ---
 
-## Getting Started
+## Casos de uso
 
-### Prerequisites
+- **Crear un proyecto** — Iniciar un espacio de trabajo para un tema o cliente
+- **Chatear con IA** — Mantener conversaciones en hilos dentro de cada proyecto
+- **Explorar chats recientes** — Encontrar y retomar conversaciones pasadas rápidamente
+- **Buscar y filtrar** — Buscar proyectos o chats; ordenar por actividad, nombre o antigüedad
+- **Gestionar hilos** — Organizar múltiples conversaciones por proyecto
 
-- [Bun](https://bun.sh/) (recommended) or Node.js 18+
+---
 
-### Install & Run
+## Primeros pasos
+
+### Requisitos previos
+
+- [Bun](https://bun.sh/) (recomendado) o Node.js 18+
+
+### Instalación y ejecución
 
 ```bash
 bun install
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-### Build for Production
+### Build para producción
 
 ```bash
 bun build
 bun start
 ```
 
-### Scripts
+### Scripts disponibles
 
-| Command | Description |
+| Comando | Descripción |
 |---------|-------------|
-| `bun dev` | Start development server |
-| `bun build` | Build for production |
-| `bun start` | Start production server |
-| `bun lint` | Run ESLint |
-| `bun test` | Run tests (Vitest) |
-| `bun run test:watch` | Run tests in watch mode |
-| `bun run test:coverage` | Generate coverage report |
+| `bun dev` | Iniciar servidor de desarrollo |
+| `bun build` | Compilar para producción |
+| `bun start` | Iniciar servidor de producción |
+| `bun lint` | Ejecutar ESLint |
+| `bun test` | Ejecutar tests (Vitest) |
+| `bun run test:watch` | Ejecutar tests en modo watch |
+| `bun run test:coverage` | Generar reporte de cobertura |
 
 ---
 
-## Project Structure
+## Estructura del proyecto
 
 ```
 app/                    # Next.js App Router
-├── dashboard/          # Dashboard routes
-│   ├── proyecto/       # Projects (list, new, [id])
-│   ├── recents/        # Recent chats
-│   └── chat/           # Chat section
+├── dashboard/          # Rutas del panel
+│   ├── proyecto/       # Proyectos (lista, nuevo, [id])
+│   ├── recents/        # Chats recientes
+│   └── chat/           # Sección de chat
 ├── login/
 ├── signup/
 components/
-├── layouts/            # Shared layouts (ListPageWithSearch)
-├── projects/           # Project components
-├── ui/                 # shadcn primitives
-constants/              # App constants
-helpers/                # Pure utility functions
-hooks/                  # Custom React hooks
-interfaces/             # TypeScript types
-store/                  # Zustand stores
+├── layouts/            # Layouts compartidos (ListPageWithSearch)
+├── projects/           # Componentes de proyectos
+├── ui/                 # Primitivos shadcn
+constants/              # Constantes de la app
+helpers/                # Funciones de utilidad puras
+hooks/                  # Hooks personalizados
+interfaces/             # Tipos TypeScript
+store/                  # Stores Zustand
 ```
 
 ---
 
-## Environment
+## Variables de entorno
 
-Copy `.env.example` to `.env.local` and add your Supabase credentials. Do not commit `.env.local`.
+Copia `.env.example` a `.env.local` y añade tus credenciales de Supabase. No subas `.env.local` al repositorio.
 
 ---
 
-## Learn More
+## Más información
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Supabase Documentation](https://supabase.com/docs)
+- [Documentación de Next.js](https://nextjs.org/docs)
+- [Documentación de Supabase](https://supabase.com/docs)
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Tailwind CSS](https://tailwindcss.com/docs)
